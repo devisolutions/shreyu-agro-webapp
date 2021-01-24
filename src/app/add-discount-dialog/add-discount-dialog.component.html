@@ -1,0 +1,21 @@
+<div mat-dialog-title>
+  <mat-toolbar color="primary">
+    Discount to Apply
+  </mat-toolbar>
+</div>
+<mat-dialog-content>
+  <div fxLayout="row" fxLayoutGap="8px">
+    <form [formGroup] = 'discountForm'>
+      <mat-form-field>
+        <mat-label>Discount</mat-label>
+        <input matInput type="number" min="0" max="100" formControlName = 'discount'>
+      </mat-form-field>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" color="primary" (click)="cancel()" class="form-action-button"
+    mat-stroked-button>Cancel</button>
+  <button type="button" color="primary" (click)="applyDiscount()" class="form-action-button" mat-stroked-button
+    cdkFocusInitial>Apply Discount</button>
+</mat-dialog-actions>

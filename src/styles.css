@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.dialog-with-toolbar .mat-dialog-container {
+  padding: 0 0 24px;
+  overflow-x: hidden;
+}
+.dialog-with-toolbar .mat-dialog-container .mat-dialog-title .mat-toolbar {
+  padding: 0 24px;
+}
+.dialog-with-toolbar .mat-dialog-container .mat-dialog-content {
+  margin: 0;
+}
+.dialog-with-toolbar .mat-dialog-container .mat-dialog-actions {
+  padding: 16px 8px 0;
+}

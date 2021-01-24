@@ -1,0 +1,8 @@
+.background-image{
+  background: url(../assets/pickle3.jpg) no-repeat;
+  height: 100%;
+}
+
+.action-buttons {
+  margin: 300px;
+}

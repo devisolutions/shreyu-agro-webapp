@@ -1,0 +1,12 @@
+<div [ngClass]="{'background-image': showButtons }">
+  <mat-toolbar color="primary" class="app-header mat-elevation-z8">
+    <div>
+      {{ title }}
+    </div>
+  </mat-toolbar>
+  <div class="action-buttons" *ngIf = "showButtons">
+    <!-- <button mat-raised-button color = "primary" routerLink="/invoices">View Invoices</button> -->
+    <button mat-raised-button color = "primary" routerLink="/generateInvoice">Generate Invoice</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
