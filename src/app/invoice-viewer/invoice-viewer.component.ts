@@ -18,9 +18,10 @@ export class InvoiceViewerComponent implements OnInit {
   viewHeight: number;
 
   displayedColumns = [
-    'product_code',
+    // 'product_code',
     'product_name',
     'product_weight',
+    'hsn_code',
     'product_price',
     'product_quantity',
     'product_cgst',

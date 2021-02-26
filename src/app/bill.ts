@@ -21,4 +21,5 @@ export interface BillItems {
   price: number;
   sGst: number;
   cGst: number;
+  hsnCode: string;
 }

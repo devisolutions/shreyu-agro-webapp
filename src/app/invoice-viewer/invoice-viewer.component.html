@@ -4,22 +4,38 @@
       <!-- <img src="/assets/icon.jpg" alt="" height="40" width="30" /> -->
       Invoice
     </h2>
-    <div fxLayout="row">
-      <fieldset fxFlex="50%">
-        <p><b>Invoice Date: </b>{{ bill?.dateOfBill }}</p>
-        <p><b>Seller Name: </b>Shreyu Agro Foods - Krishnaji</p>
-        <p><b>Seller Address: </b></p>
-        <p><b>Seller Mobile Number: </b></p>
-        <p><b>Seller Email: </b></p>
-        <p><b>Seller GST No.: </b></p>
+    <div fxLayout="column">
+      <fieldset fxFlex="50%" style="padding-bottom: 18px;">
+        <legend><b>Seller Details</b></legend>
+        <div fxLayout="row" style="height: 38px;">
+          <!-- <p fxFlex="20%"><b>Invoice Date: </b>{{ bill?.dateOfBill }}</p> -->
+          <p fxFlex="36%"><b>Name: </b>Shreyu Agro Foods</p>
+          <p fxFlex="30%"><b>Mobile: </b>+91 9284877899</p>
+          <p fxFlex="33%"><b>Email: </b>shreyuagro@gmail.com</p>
+        </div>
+        <div fxLayout="row" style="height: 38px;">
+          <p fxFlex="36%"><b>GST No.: </b>27ABFCS1662M1ZY</p>
+          <p fxFlex="30%"><b>PAN No.: </b>ABFCS1662M</p>
+          <p fxFlex="33%"><b>TAN No.: </b>PNES70854A</p>
+        </div>
+        <div fxLayout="row" style="height: 38px;">
+          <p fxFlex="36%"><b>CIN: </b>U15100MH2020PTC352484</p>
+          <p fxFlex="60%"><b>Address: </b>Megha Silver Building, Office No-11, Atmaram Kene Residency, Rambaug, Kalyan(W)-421301</p>
+        </div>
+        <!-- <div fxLayout="row">
+        </div> -->
       </fieldset>
-      <fieldset fxFlex="50%">
-        <p><b>Invoice No.: </b>{{ bill?.id }}</p>
-        <p><b>Buyer Name: </b>{{ bill?.buyerName }}</p>
-        <p><b>Buyer Address: </b>{{ bill?.buyerAddress }}</p>
-        <p><b>Buyer Mobile Number: </b>{{ bill?.buyerMobileNumber }}</p>
-        <p><b>Buyer Email: </b>{{ bill?.buyerEmail }}</p>
-        <p><b>Buyer GST No: </b>{{ bill?.buyerMobileNumber }}</p>
+      <fieldset fxFlex="50%" style="padding-bottom: 18px;">
+        <legend><b>Buyer Details</b></legend>
+        <div fxLayout="row" style="height: 38px;">
+          <p fxFlex="36%"><b>Name: </b>{{ bill?.buyerName }}</p>
+          <p fxFlex="30%"><b>Mobile: </b>{{ bill?.buyerMobileNumber }}</p>
+          <p fxFlex="33%"><b>Email: </b>{{ bill?.buyerEmail }}</p>
+        </div>
+        <div fxLayout="row" style="height: 38px;">
+          <p fxFlex="36%"><b>GST No: </b>{{ bill?.buyerMobileNumber }}</p>
+          <p fxFlex="60%"><b>Address: </b>{{ bill?.buyerAddress }}</p>
+        </div>
       </fieldset>
     </div>
 
@@ -28,16 +44,21 @@
         <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
         <!-- Code Column -->
-        <ng-container matColumnDef="product_code">
+        <!-- <ng-container matColumnDef="product_code">
           <th mat-header-cell *matHeaderCellDef>Product Code</th>
-          <td style="width: 20%" mat-cell *matCellDef="let element">
+          <td mat-cell *matCellDef="let element">
             {{ element.productCode }}
           </td>
-        </ng-container>
+        </ng-container> -->
         <!-- Name Column -->
         <ng-container matColumnDef="product_name">
           <th mat-header-cell *matHeaderCellDef>Product Name</th>
           <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="hsn_code">
+          <th mat-header-cell *matHeaderCellDef>HSN Code</th>
+          <td mat-cell *matCellDef="let element">{{ element.hsnCode }}</td>
         </ng-container>
         <!-- Weight Column -->
         <ng-container matColumnDef="product_weight">
@@ -87,9 +108,10 @@
     </fieldset>
     <fieldset class="spacer">
       <mat-label>
-        <span fxFlex="33.33%"><b>Total Price : </b>{{ bill?.billAmount }}</span>
-        <span fxFlex="33.33%"><b>Discount : </b>{{ bill?.discountRate }}</span>
-        <span fxFlex="33.33%"
+        <span fxFlex="32%"><b>Invoice Date: </b>{{ bill?.dateOfBill }}</span>
+        <span fxFlex="23%"><b>Total Price : </b>{{ bill?.billAmount }}</span>
+        <span fxFlex="16%"><b>Discount : </b>{{ bill?.discountRate }}</span>
+        <span fxFlex="30%"
           ><b>Discounted Price : </b>{{ bill?.finalBillAmount }}</span
         >
       </mat-label>
@@ -99,7 +121,7 @@
         <b>Terms & Conditions :</b>
         <ul>
           <li>Goods once sold cannot be returned.</li>
-          <li>Goods once sold cannot be returned.</li>
+          <!-- <li>Goods once sold cannot be returned.</li> -->
         </ul>
       </fieldset>
       <fieldset fxFlex="33.33%">
