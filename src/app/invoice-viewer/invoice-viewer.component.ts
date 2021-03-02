@@ -10,6 +10,7 @@ import { CommonStateService } from '../common-state.service';
   styleUrls: ['./invoice-viewer.component.css'],
 })
 export class InvoiceViewerComponent implements OnInit {
+  imgPath = "http://localhost:8080/shreyu-agro/assets/krishnaji.png";
   id: number;
   bill: Bill;
   pdfName: string;

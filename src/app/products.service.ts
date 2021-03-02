@@ -7,7 +7,7 @@ import { Product } from './product';
   providedIn: 'root',
 })
 export class ProductsService {
-  private baseURL = 'http://localhost:8080/springboot-backend/product';
+  private baseURL = 'http://localhost:8080/shreyu-agro/product';
   private devURL = 'http://localhost:8080/product';
 
   constructor(private httpClient: HttpClient) {}

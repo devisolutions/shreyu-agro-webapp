@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class BillsService {
-  private baseURL = 'http://localhost:8080/springboot-backend/bill';
+  private baseURL = 'http://localhost:8080/shreyu-agro/bill';
   private devURL = 'http://localhost:8080/bill';
 
   constructor(private httpClient: HttpClient,

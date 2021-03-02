@@ -30,6 +30,7 @@ export class AddInvoiceComponent implements OnInit {
     'product_code',
     'product_name',
     'product_weight',
+    'hsn_code',
     'product_price',
     'product_quantity',
     'product_cgst',
@@ -99,7 +100,7 @@ export class AddInvoiceComponent implements OnInit {
       });
       this.priceForm
         .get('discountedPrice')
-        .setValue(Math.round(discountedPrice));
+        .setValue(discountedPrice.toFixed(2));
     }
   }
 
@@ -180,7 +181,7 @@ export class AddInvoiceComponent implements OnInit {
       const productGst = ((data.sgst + data.cgst) * productPrice) / 100;
       totalPrice = totalPrice + productPrice + productGst;
     });
-    this.priceForm.get('totalPrice').setValue(totalPrice);
+    this.priceForm.get('totalPrice').setValue(totalPrice.toFixed(2));
     // this.calculateDiscountedPrice(this.priceForm.get('discount').value);
   }
 
