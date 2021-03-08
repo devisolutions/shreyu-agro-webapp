@@ -10,7 +10,7 @@ import { CommonStateService } from '../common-state.service';
   styleUrls: ['./invoice-viewer.component.css'],
 })
 export class InvoiceViewerComponent implements OnInit {
-  imgPath = "http://localhost:8080/shreyu-agro/assets/krishnaji.png";
+  imgPath = 'http://localhost:8080/shreyu-agro/assets/krishnaji.png';
   id: number;
   bill: Bill;
   pdfName: string;
@@ -25,9 +25,11 @@ export class InvoiceViewerComponent implements OnInit {
     'hsn_code',
     'product_price',
     'product_quantity',
+    'total_wo_gst',
     'product_cgst',
     'product_sgst',
-    'total',
+    'gst_amount',
+    'total'
   ];
 
   constructor(

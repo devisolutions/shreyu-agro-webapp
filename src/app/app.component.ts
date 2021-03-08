@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Shreyu Agro Foods - Krishnaji';
+  title = 'Shreyu Agro Food Pvt. Ltd. - Krishnaji';
   imagePath = '../assets/icon.jpg';
   private destroyed = new Subject();
   showButtons = false;

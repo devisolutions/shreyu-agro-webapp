@@ -4,39 +4,31 @@
       <span>
         <img src="{{imgPath}}" height="100" width="150" />
       </span>
-      <p style="margin-top: 0px;">Shreyu Agro Foods - Invoice</p>
+      <p style="margin-top: 0px;">Tax Invoice</p>
     </h2>
     <div fxLayout="column">
       <fieldset fxFlex="50%" style="padding-bottom: 18px;">
         <legend><b>Seller Details</b></legend>
         <div fxLayout="row" style="height: 38px;">
-          <!-- <p fxFlex="20%"><b>Invoice Date: </b>{{ bill?.dateOfBill }}</p> -->
-          <p fxFlex="36%"><b>Name: </b>Shreyu Agro Foods</p>
-          <p fxFlex="30%"><b>Mobile: </b>+91 9284877899</p>
-          <p fxFlex="33%"><b>Email: </b>shreyuagro@gmail.com</p>
-        </div>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="36%"><b>GST No.: </b>27ABFCS1662M1ZY</p>
-          <p fxFlex="30%"><b>PAN No.: </b>ABFCS1662M</p>
-          <p fxFlex="33%"><b>TAN No.: </b>PNES70854A</p>
-        </div>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="36%"><b>Bank Name: </b>IndusInd Bank</p>
-          <p fxFlex="30%"><b>Account No.: </b>257724253077</p>
-          <p fxFlex="33%"><b>IFSC Code: </b>INDB0000154</p>
-        </div>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="36%"><b>CIN: </b>U15100MH2020PTC352484</p>
-          <p fxFlex="30%"><b>Branch: </b>Kalyan West</p>
+          <p fxFlex="36%"><b>Name: </b>Shreyu Agro Food Pvt. Ltd.</p>
+          <p fxFlex="30%"><b>Invoice No.: </b>{{bill?.billId}}</p>
           <p fxFlex="33%"><b>Invoice Date: </b>{{bill?.dateOfBill}}</p>
         </div>
         <div fxLayout="row" style="height: 38px;">
-          <!-- <p fxFlex="36%"><b>CIN: </b>U15100MH2020PTC352484</p> -->
-          <p fxFlex="36%"><b>FSSAI No.: </b>21521104000413</p>
-          <p fxFlex="64%"><b>Address: </b>Megha Silver Building, Office No-11, Atmaram Kene Residency, Rambaug, Kalyan(W)-421301</p>
+          <p fxFlex="36%"><b>Email: </b>shreyuagro@gmail.com</p>
+          <p fxFlex="30%"><b>Mobile: </b>+91 9284877899</p>
+          <p fxFlex="33%"><b>FSSAI No.: </b>215211040</p>
+          <!-- <p fxFlex="30%"><b>PAN No.: </b>ABFCS1662M</p>
+          <p fxFlex="33%"><b>TAN No.: </b>PNES70854A</p> -->
         </div>
-        <!-- <div fxLayout="row">
-        </div> -->
+        <div fxLayout="row" style="height: 38px;">
+          <p fxFlex="36%"><b>GST No.: </b>27ABFCS1662M1ZY</p>
+          <p fxFlex="60%"><b>Address: </b>Megha Silver Building, Office No-11, Atmaram Kene Residency, Rambaug, Kalyan(W)-421301</p>
+        </div>
+        <div fxLayout="row" style="height: 38px;">
+          <p fxFlex="36%"><b>CIN: </b>U15100MH2020PTC352484</p>
+          <p fxFlex="60%"><b>Dispatch from:</b></p>
+        </div>
       </fieldset>
       <fieldset fxFlex="50%" style="padding-bottom: 18px;">
         <legend><b>Buyer Details</b></legend>
@@ -49,11 +41,15 @@
           <p fxFlex="36%"><b>GST No: </b>{{ bill?.buyerGSTNumber }}</p>
           <p fxFlex="60%"><b>Address: </b>{{ bill?.buyerAddress }}</p>
         </div>
+        <div fxLayout="row" style="height: 38px;">
+          <p fxFlex="36%"><b>Place of Supply: </b>{{ bill?.buyerGSTNumber }}</p>
+          <p fxFlex="60%"><b>Dispatch To: </b>{{ bill?.buyerAddress }}</p>
+        </div>
       </fieldset>
     </div>
 
     <fieldset class="spacer">
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="dataSource" style="text-align-last: center;">
         <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
         <!-- Code Column -->
@@ -65,43 +61,62 @@
         </ng-container> -->
         <!-- Name Column -->
         <ng-container matColumnDef="product_name">
-          <th mat-header-cell *matHeaderCellDef>Product Name</th>
+          <th mat-header-cell *matHeaderCellDef class="bold">Product Name</th>
           <td mat-cell *matCellDef="let element">{{ element.name }}</td>
         </ng-container>
         <!-- Weight Column -->
         <ng-container matColumnDef="hsn_code">
-          <th mat-header-cell *matHeaderCellDef>HSN Code</th>
+          <th mat-header-cell *matHeaderCellDef class="bold">HSN Code</th>
           <td mat-cell *matCellDef="let element">{{ element.hsnCode }}</td>
         </ng-container>
         <!-- Weight Column -->
         <ng-container matColumnDef="product_weight">
-          <th mat-header-cell *matHeaderCellDef>Weight (In Gms.)</th>
+          <th mat-header-cell *matHeaderCellDef class="bold">Weight (In Gms.)</th>
           <td mat-cell *matCellDef="let element">{{ element.weightInGms }}</td>
         </ng-container>
         <!-- Price Column -->
         <ng-container matColumnDef="product_price">
-          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <th mat-header-cell *matHeaderCellDef class="bold">Amount</th>
           <td mat-cell *matCellDef="let element">{{ element.price }}</td>
         </ng-container>
         <!-- Quantity Column -->
         <ng-container matColumnDef="product_quantity">
-          <th mat-header-cell *matHeaderCellDef>Quantity</th>
+          <th mat-header-cell *matHeaderCellDef class="bold">Quantity</th>
           <td mat-cell *matCellDef="let element">
             {{ element.productQuantity }}
           </td>
         </ng-container>
+        
+        <ng-container matColumnDef="total_wo_gst">
+          <th mat-header-cell *matHeaderCellDef class="bold">Taxable Amount</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.price * element.productQuantity }}
+          </td>
+        </ng-container>
         <!-- CGST Column -->
         <ng-container matColumnDef="product_cgst">
-          <th mat-header-cell *matHeaderCellDef>CGST</th>
+          <th mat-header-cell *matHeaderCellDef class="bold">CGST</th>
           <td mat-cell *matCellDef="let element">{{ element.cgst }}</td>
         </ng-container>
         <!-- SGST Column -->
         <ng-container matColumnDef="product_sgst">
-          <th mat-header-cell *matHeaderCellDef>SGST</th>
+          <th mat-header-cell *matHeaderCellDef class="bold">SGST</th>
           <td mat-cell *matCellDef="let element">{{ element.sgst }}</td>
         </ng-container>
+
+        <ng-container matColumnDef="gst_amount">
+          <th mat-header-cell *matHeaderCellDef class="bold">GST Amount</th>
+          <td mat-cell *matCellDef="let element">
+            {{ (element.productQuantity * element.price +
+              (element.price *
+                element.productQuantity *
+                (element.sgst + element.cgst)) /
+                100) - (element.price * element.productQuantity) | number : '1.2-2' }}
+          </td>
+        </ng-container>
+
         <ng-container matColumnDef="total">
-          <th mat-header-cell *matHeaderCellDef>Total</th>
+          <th mat-header-cell *matHeaderCellDef class="bold">Total Amount</th>
           <td mat-cell *matCellDef="let element">
             {{
               element.productQuantity * element.price +
@@ -129,10 +144,20 @@
         >
       </mat-label>
     </fieldset>
-    <div fxLayout="row">
+    <div fxLayout="row" class="spacer">
+      <fieldset fxFlex="100%">
+        <mat-label>
+          <span fxFlex="26%"><b>Bank Name: </b>IndusInd Bank</span>
+          <span fxFlex="28%"><b>Account No.: </b>257724253077</span>
+          <span fxFlex="25%"><b>IFSC Code: </b>INDB0000154</span>
+          <span fxFlex="21%"><b>Branch: </b>Kalyan West</span>
+        </mat-label>
+      </fieldset>
+    </div>
+    <div fxLayout="row" class="spacer">
       <fieldset fxFlex="33.33%">
         <b>Terms & Conditions :</b>
-        <ul>
+        <ul style="font-size: 14px;">
           <li>Payment of this bill should be on demand.</li>
           <li>We do not take any responsibility after the goods have left from our Godown.</li>
         </ul>
@@ -147,7 +172,7 @@
         <br /><br />
         Authorized Signature
         <hr />
-        <b>From SHREYU AGRO FOODS - KRISHNAJI</b>
+        <b>From SHREYU AGRO FOOD Pvt Ltd - KRISHNAJI</b>
       </fieldset>
     </div>
   </div>

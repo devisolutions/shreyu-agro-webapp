@@ -1,5 +1,6 @@
 export interface Bill {
   id?: number;
+  billId?: number;
   buyerName: string;
   dateOfBill: string;
   buyerAddress: number;
