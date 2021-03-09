@@ -121,9 +121,9 @@
 
             <!-- Weight Column -->
             <ng-container matColumnDef="product_weight">
-              <th mat-header-cell *matHeaderCellDef>Weight (In Gms.)</th>
+              <th mat-header-cell *matHeaderCellDef>Weight</th>
               <td mat-cell *matCellDef="let element">
-                {{ element.weightInGms }}
+                {{ convertWeight(element.name, element.weightInGms) }}
               </td>
             </ng-container>
             <ng-container matColumnDef="hsn_code">

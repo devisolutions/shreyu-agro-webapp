@@ -105,6 +105,20 @@ export class InvoiceViewerComponent implements OnInit {
     // }
   }
 
+  convertWeight(productName : string, weightInGms : number) : string {
+    let weight : string;
+    if (weightInGms < 1000) {
+      weight = weightInGms.toString();
+    } else {
+      weight = (weightInGms/1000).toString();
+    }
+    if(productName.toLowerCase().includes('sauce') || productName.toLowerCase().includes('vinegar')) {
+      return weightInGms < 1000 ? weight + ' ml' : weight + ' Ltr'
+    } else {
+      return weightInGms < 1000 ? weight + ' gms' : weight + ' Kg'
+    }
+  }
+
   routeToGenerateNewInvoice(): void {
     this.router.navigate(['/generateInvoice']);
     this.commonStateService.setCurrentComponentName('AddInvoiceComponent');
