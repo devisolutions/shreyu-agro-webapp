@@ -6,4 +6,5 @@ export class Product {
     sgst: number;
     cgst: number;
     quantity?: number;
+    productOrder?: number;
 }

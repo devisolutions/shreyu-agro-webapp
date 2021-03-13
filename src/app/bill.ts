@@ -23,4 +23,5 @@ export interface BillItems {
   sGst: number;
   cGst: number;
   hsnCode: string;
+  productOrder: number;
 }

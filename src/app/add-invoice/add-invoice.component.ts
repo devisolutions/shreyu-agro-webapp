@@ -137,17 +137,17 @@ export class AddInvoiceComponent implements OnInit {
     this.commonStateService.setCurrentComponentName('AppComponent');
   }
 
-  convertWeight(productName : string, weightInGms : number) : string {
-    let weight : string;
+  convertWeight(productName: string, weightInGms: number): string {
+    let weight: string;
     if (weightInGms < 1000) {
       weight = weightInGms.toString();
     } else {
-      weight = (weightInGms/1000).toString();
+      weight = (weightInGms / 1000).toString();
     }
-    if(productName.toLowerCase().includes('sauce') || productName.toLowerCase().includes('vinegar')) {
-      return weightInGms < 1000 ? weight + ' ml' : weight + ' Ltr'
+    if (productName.toLowerCase().includes('sauce') || productName.toLowerCase().includes('vinegar')) {
+      return weightInGms < 1000 ? weight + ' ml' : weight + ' Ltr';
     } else {
-      return weightInGms < 1000 ? weight + ' gms' : weight + ' Kg'
+      return weightInGms < 1000 ? weight + ' gms' : weight + ' Kg';
     }
   }
   addProduct() {
@@ -163,6 +163,11 @@ export class AddInvoiceComponent implements OnInit {
         if (currentProduct.length > 0) {
           let addProduct = currentProduct[0];
           addProduct = { ...addProduct, quantity };
+          let productOrder = 0;
+          if (this.dataSource.length > 0) {
+            productOrder = (this.dataSource[this.dataSource.length - 1].productOrder) + 1;
+          }
+          addProduct = { ...addProduct, productOrder};
           this.dataSource.push(addProduct);
           this.dataSource = this.dataSource.slice();
           this.toastr.success('Product added successfully', 'Add Product');
@@ -223,6 +228,7 @@ export class AddInvoiceComponent implements OnInit {
         return {
           productCode: item.code,
           productQuantity: item.quantity,
+          productOrder: item.productOrder
         };
       })
       .forEach((item: BillItems) => this.billItems.push(item));

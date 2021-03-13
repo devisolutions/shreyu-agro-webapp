@@ -44,6 +44,7 @@ export class InvoiceViewerComponent implements OnInit {
     this.billservice.getBillById(this.id).subscribe((data) => {
       this.bill = data;
       this.dataSource = data.billItems;
+      this.dataSource.sort((a, b) => a.productOrder - b.productOrder);
       this.pdfName =
         data.id + '_' + data.buyerName + '_' + data.dateOfBill + '.pdf';
     });
@@ -105,17 +106,17 @@ export class InvoiceViewerComponent implements OnInit {
     // }
   }
 
-  convertWeight(productName : string, weightInGms : number) : string {
-    let weight : string;
+  convertWeight(productName: string, weightInGms: number): string {
+    let weight: string;
     if (weightInGms < 1000) {
       weight = weightInGms.toString();
     } else {
-      weight = (weightInGms/1000).toString();
+      weight = (weightInGms / 1000).toString();
     }
-    if(productName.toLowerCase().includes('sauce') || productName.toLowerCase().includes('vinegar')) {
-      return weightInGms < 1000 ? weight + ' ml' : weight + ' Ltr'
+    if (productName.toLowerCase().includes('sauce') || productName.toLowerCase().includes('vinegar')) {
+      return weightInGms < 1000 ? weight + ' ml' : weight + ' Ltr';
     } else {
-      return weightInGms < 1000 ? weight + ' gms' : weight + ' Kg'
+      return weightInGms < 1000 ? weight + ' gms' : weight + ' Kg';
     }
   }
 

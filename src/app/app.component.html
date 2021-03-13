@@ -6,7 +6,7 @@
   </mat-toolbar>
   <div class="action-buttons" *ngIf = "showButtons">
     <!-- <button mat-raised-button color = "primary" routerLink="/invoices">View Invoices</button> -->
-    <button mat-raised-button color = "primary" routerLink="/generateInvoice">Generate Invoice</button>
+    <button mat-raised-button color = "primary" (click) = "generateInvoiceRoute()">Generate Invoice</button>
   </div>
   <router-outlet></router-outlet>
 </div>

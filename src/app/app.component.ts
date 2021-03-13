@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonStateService } from './common-state.service';
-import { takeUntil, distinctUntilChanged, delay } from 'rxjs/operators';
+import { takeUntil, delay } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { SoftwareValidityService } from './software-validity.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +17,12 @@ export class AppComponent implements OnInit, OnDestroy {
   private destroyed = new Subject();
   showButtons = false;
 
-  constructor(private commonStateService: CommonStateService) {}
+  constructor(
+    private commonStateService: CommonStateService,
+    private router: Router,
+    private softwareValidityService: SoftwareValidityService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.commonStateService.setCurrentComponentName('AppComponent');
@@ -27,6 +35,19 @@ export class AppComponent implements OnInit, OnDestroy {
           this.showButtons = false;
         }
       });
+  }
+
+  generateInvoiceRoute() {
+    this.softwareValidityService
+    .checkSoftwareValidity()
+    .subscribe((res: boolean) => {
+      if (res) {
+        this.router.navigateByUrl('/generateInvoice');
+      } else {
+        // show popup of extend validity
+        this.toastr.error('', 'Your Software Validity has been Expired, Please Contact Software Admins');
+      }
+    });
   }
 
   ngOnDestroy(): void {
