@@ -152,7 +152,7 @@ export class AddInvoiceComponent implements OnInit {
   }
   addProduct() {
     const currentCode = this.productDetailsForm.get('select_code').value;
-    const quantity = this.productDetailsForm.get('quantity').value;
+    let quantity = this.productDetailsForm.get('quantity').value;
     if (currentCode && quantity) {
       if (
         this.dataSource.filter((data) => data.code === currentCode).length === 0
@@ -162,6 +162,7 @@ export class AddInvoiceComponent implements OnInit {
         );
         if (currentProduct.length > 0) {
           let addProduct = currentProduct[0];
+          quantity = quantity * addProduct.itemsPerBox;
           addProduct = { ...addProduct, quantity };
           let productOrder = 0;
           if (this.dataSource.length > 0) {

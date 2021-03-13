@@ -7,4 +7,5 @@ export class Product {
     cgst: number;
     quantity?: number;
     productOrder?: number;
+    itemsPerBox?: number;
 }

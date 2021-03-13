@@ -90,7 +90,7 @@
           </mat-autocomplete>
         </mat-form-field>
         <mat-form-field style="width: 10%; margin-right: 24px">
-          <input min="0" type = "number" matInput formControlName="quantity" placeholder="Quantity" />
+          <input min="0" type = "number" matInput formControlName="quantity" placeholder="Number of Boxes" />
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="addProduct()">
           Add Product
@@ -139,7 +139,7 @@
             <!-- Quantity Column -->
             <ng-container matColumnDef="product_quantity">
               <th mat-header-cell *matHeaderCellDef>Quantity</th>
-              <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+              <td mat-cell *matCellDef="let element">{{ element.quantity / element.itemsPerBox }} ({{element.itemsPerBox}} pcs)</td>
             </ng-container>
 
             <!-- CGST Column -->
