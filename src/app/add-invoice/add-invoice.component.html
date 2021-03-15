@@ -85,7 +85,7 @@
               [value]="product.code"
             >
               {{ product.code }} | {{ product.name }} |
-              {{ product.weightInGms }}
+              {{ convertWeight(product.name, product.weightInGms) }}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
