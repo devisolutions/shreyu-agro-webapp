@@ -1,0 +1,67 @@
+<div mat-dialog-title>
+    <mat-toolbar color="primary">
+        {{label}}
+    </mat-toolbar>
+  </div>
+  <mat-dialog-content>
+    <div fxLayout="row" fxLayoutGap="8px">
+        <form [formGroup]="addProductForm">
+            <div fxLayout="column" class="addProductForm">
+                <div fxLayout="row" fxLayoutAlign="space-between">
+                    <mat-form-field>
+                      <mat-label>Product Code</mat-label>
+                      <input matInput type="number" min="0" max="100" formControlName="code" readonly />
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Product Name</mat-label>
+                      <input matInput type="text" formControlName="name" />
+                      <mat-error *ngIf="addProductForm.get('name').hasError('required')">Product Name is Required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row"  fxLayoutAlign="space-between">
+                    <mat-form-field>
+                      <mat-label>Weight</mat-label>
+                      <input matInput type="number" min="0" max="100" formControlName="weightInGms" />
+                      <mat-error *ngIf="addProductForm.get('name').hasError('required')">Weight is Required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field >
+                      <mat-label>HSN Code</mat-label>
+                      <input matInput type="text" formControlName="hsnCode" />
+                      <mat-error *ngIf="addProductForm.get('name').hasError('required')">HSN Code is Required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row"  fxLayoutAlign="space-between">
+                    <mat-form-field>
+                      <mat-label>Amount</mat-label>
+                      <input matInput type="number" min="0" max="100" formControlName="price" />
+                      <mat-error *ngIf="addProductForm.get('name').hasError('required')">Amount is Required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field >
+                      <mat-label>Items Per Box</mat-label>
+                      <input matInput type="number" min="0" max="100" formControlName="itemsPerBox" />
+                      <mat-error *ngIf="addProductForm.get('name').hasError('required')">Items per box is Required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row"  fxLayoutAlign="space-between">
+                    <mat-form-field>
+                      <mat-label>CGST</mat-label>
+                      <input matInput type="number" min="0" max="100" formControlName="cgst" />
+                      <mat-error *ngIf="addProductForm.get('name').hasError('required')">CGST is Required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>SGST</mat-label>
+                      <input matInput type="number" min="0" max="100" formControlName="sgst" />
+                      <mat-error *ngIf="addProductForm.get('name').hasError('required')">SGST is Required</mat-error>
+                    </mat-form-field>                
+                </div>
+            </div>
+          </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button" color="primary" (click)="cancel()" class="form-action-button"
+      mat-stroked-button>Cancel</button>
+    <button type="button" color="primary" (click)="addUpdateProduct()" class="form-action-button" mat-stroked-button
+      cdkFocusInitial [disabled]="this.addProductForm.invalid">{{label}}</button>
+  </mat-dialog-actions>
+  

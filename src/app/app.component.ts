@@ -37,6 +37,19 @@ export class AppComponent implements OnInit, OnDestroy {
       });
   }
 
+  addViewProductRoute() {
+    this.softwareValidityService
+    .checkSoftwareValidity()
+    .subscribe((res: boolean) => {
+      if (res) {
+        this.router.navigateByUrl('/productList');
+      } else {
+        // show popup of extend validity
+        this.toastr.error('', 'Your Software Validity has been Expired, Please Contact Software Admins');
+      }
+    });
+  }
+
   generateInvoiceRoute() {
     this.softwareValidityService
     .checkSoftwareValidity()

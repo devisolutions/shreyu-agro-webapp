@@ -15,4 +15,16 @@ export class ProductsService {
   getProductsList(): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`${this.baseURL}`);
   }
+
+  addProduct(product: Product): Observable<Product> {
+    return this.httpClient.post<Product>(`${this.baseURL}`, product);
+  }
+
+  deleteProduct(productCode: string): Observable<any> {
+    return this.httpClient.delete(this.baseURL + '/' + productCode);
+  }
+
+  updateProduct(product: Product): Observable<any> {
+    return this.httpClient.post<Product>(this.baseURL + '/' + product.code, product);
+  }
 }

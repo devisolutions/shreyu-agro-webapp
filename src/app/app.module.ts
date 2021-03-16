@@ -18,6 +18,7 @@ import {
   MatTableModule,
   MatIconModule,
   MatDialogModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -27,13 +28,17 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { InvoiceViewerComponent } from './invoice-viewer/invoice-viewer.component';
 import { NgxPrintModule } from 'ngx-print';
+import { ProductsListComponent } from './products-list/products-list.component';
+import { AddUpdateProductDialogComponent } from './add-update-product-dialog/add-update-product-dialog.component';
 
 @NgModule({
   declarations: [AppComponent,
     GetAllInvoicesComponent,
     AddInvoiceComponent,
     AddDiscountDialogComponent,
-    InvoiceViewerComponent
+    InvoiceViewerComponent,
+    ProductsListComponent,
+    AddUpdateProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { NgxPrintModule } from 'ngx-print';
     MatTableModule,
     MatIconModule,
     MatDialogModule,
+    MatTooltipModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-right',
@@ -65,7 +71,7 @@ import { NgxPrintModule } from 'ngx-print';
   ],
   providers: [ToastrService, NgxSpinnerService],
   bootstrap: [AppComponent],
-  entryComponents: [AddDiscountDialogComponent],
+  entryComponents: [AddDiscountDialogComponent, AddUpdateProductDialogComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

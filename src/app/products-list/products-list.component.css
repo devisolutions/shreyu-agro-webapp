@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+  }
+
+.addProductButton {
+  width: 10%;
+  height: 0%;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.addProductForm {
+  margin-top: 20px;
+}
+
+.table-div {
+  max-height: 610px;
+  overflow: scroll;
+}
+
+th, td {
+  white-space: nowrap; 
+  text-overflow:ellipsis; 
+  overflow: hidden; 
+  max-width:1px;
+  
+}
+
+.back-button {
+  margin-top: 10px;
+  float: right;
+  margin-right: 10px;
+}

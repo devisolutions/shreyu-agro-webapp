@@ -1,0 +1,91 @@
+<div fxLayout="row" fxLayoutAlign="space-between">
+    <h3>Products List</h3>
+    <button mat-raised-button color="primary" class="addProductButton" (click)="addProduct()">
+        {{buttonLabel}}
+    </button>
+</div>
+<div class="table-div mat-elevation-z8">
+  <table mat-table [dataSource]="productList" class="">
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef width="10%">Product Code</th>
+      <td mat-cell *matCellDef="let element" width="10%">{{ element.code }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef width="20%">Product Name</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        width="20%"
+        [matTooltip]="element.name"
+        matTooltipPosition="above"
+      >
+        {{ element.name }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef width="10%">Weight</th>
+      <td mat-cell *matCellDef="let element" width="10%">
+        {{ element.weightInGms }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hsn_code">
+      <th mat-header-cell *matHeaderCellDef width="10%">HSN Code</th>
+      <td mat-cell *matCellDef="let element" width="10%">
+        {{ element.hsnCode }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef width="10%">Amount</th>
+      <td mat-cell *matCellDef="let element" width="10%">
+        {{ element.price }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="items_per_box">
+      <th mat-header-cell *matHeaderCellDef width="10%">Items Per Box</th>
+      <td mat-cell *matCellDef="let element" width="10%">
+        {{ element.itemsPerBox }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cgst">
+      <th mat-header-cell *matHeaderCellDef width="10%">CGST</th>
+      <td mat-cell *matCellDef="let element" width="10%">{{ element.cgst }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sgst">
+      <th mat-header-cell *matHeaderCellDef width="10%">SGST</th>
+      <td mat-cell *matCellDef="let element" width="10%">{{ element.sgst }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef width="5%"></th>
+      <td mat-cell *matCellDef="let element" width="5%">
+        <button mat-icon-button (click) = "editProduct(element)"><mat-icon>edit</mat-icon></button>
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef width="5%"></th>
+      <td mat-cell *matCellDef="let element" width="5%">
+        <button mat-icon-button (click) = "deleteProduct(element.code)"><mat-icon>delete</mat-icon></button>
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="routeToAppComponent()"
+  class="back-button"
+>
+  back
+</button>
