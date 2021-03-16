@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AddUpdateProductDialogComponent } from '../add-update-product-dialog/add-update-product-dialog.component';
+import { DeleteProductDialogComponent } from '../delete-product-dialog/delete-product-dialog.component';
 
 @Component({
   selector: 'app-products-list',
@@ -15,7 +16,7 @@ import { AddUpdateProductDialogComponent } from '../add-update-product-dialog/ad
 })
 export class ProductsListComponent implements OnInit {
   productList: Product[];
-  displayedColumns: string[] = ['code', 'name', 'weight', 'hsn_code', 'price', 'items_per_box', 'cgst', 'sgst', 'edit'];
+  displayedColumns: string[] = ['code', 'name', 'weight', 'hsn_code', 'price', 'items_per_box', 'cgst', 'sgst', 'edit', 'delete'];
   currentProductCode: number;
   buttonLabel = 'Add Product';
 
@@ -49,8 +50,24 @@ export class ProductsListComponent implements OnInit {
   }
 
   deleteProduct(code: string) {
-    this.productsService.deleteProduct(code).subscribe(() => {
-      this.loadExistingProducts();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.panelClass = 'dialog-with-toolbar';
+    dialogConfig.minWidth = '40%';
+    dialogConfig.position = {
+      top: '10%',
+      left: '30%',
+    };
+    dialogConfig.disableClose = true;
+    const dialogRef = this.dialog.open(
+      DeleteProductDialogComponent,
+      dialogConfig
+    );
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res) {
+        this.productsService.deleteProduct(code).subscribe(() => {
+          this.loadExistingProducts();
+        });
+      }
     });
   }
 

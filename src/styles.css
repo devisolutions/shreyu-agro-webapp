@@ -18,3 +18,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .dialog-with-toolbar .mat-dialog-container .mat-dialog-actions {
   padding: 16px 8px 0;
 }
+
+.mat-tooltip.tooltip {
+  font-size: 12px;
+}

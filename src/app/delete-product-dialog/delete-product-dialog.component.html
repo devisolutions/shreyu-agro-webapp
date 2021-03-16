@@ -1,0 +1,15 @@
+<div mat-dialog-title>
+    <mat-toolbar color="primary">
+        Delete Product
+    </mat-toolbar>
+  </div>
+  <mat-dialog-content>
+    Are you sure you want to delete the product ?
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button" color="primary" (click)="cancel()" class="form-action-button"
+      mat-stroked-button>No</button>
+    <button type="button" color="primary" (click)="delete()" class="form-action-button" mat-stroked-button
+      cdkFocusInitial>Yes</button>
+  </mat-dialog-actions>
+  

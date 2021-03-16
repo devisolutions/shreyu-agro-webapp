@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GetAllInvoicesComponent } from './get-all-invoices/get-all-invoices.component';
@@ -30,6 +29,7 @@ import { InvoiceViewerComponent } from './invoice-viewer/invoice-viewer.componen
 import { NgxPrintModule } from 'ngx-print';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { AddUpdateProductDialogComponent } from './add-update-product-dialog/add-update-product-dialog.component';
+import { DeleteProductDialogComponent } from './delete-product-dialog/delete-product-dialog.component';
 
 @NgModule({
   declarations: [AppComponent,
@@ -38,7 +38,8 @@ import { AddUpdateProductDialogComponent } from './add-update-product-dialog/add
     AddDiscountDialogComponent,
     InvoiceViewerComponent,
     ProductsListComponent,
-    AddUpdateProductDialogComponent
+    AddUpdateProductDialogComponent,
+    DeleteProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +72,7 @@ import { AddUpdateProductDialogComponent } from './add-update-product-dialog/add
   ],
   providers: [ToastrService, NgxSpinnerService],
   bootstrap: [AppComponent],
-  entryComponents: [AddDiscountDialogComponent, AddUpdateProductDialogComponent],
+  entryComponents: [AddDiscountDialogComponent, AddUpdateProductDialogComponent, DeleteProductDialogComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
