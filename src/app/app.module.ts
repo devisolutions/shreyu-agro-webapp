@@ -18,6 +18,7 @@ import {
   MatIconModule,
   MatDialogModule,
   MatTooltipModule,
+  MatGridListModule,
 } from '@angular/material';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -61,6 +62,7 @@ import { DeleteProductDialogComponent } from './delete-product-dialog/delete-pro
     MatTableModule,
     MatIconModule,
     MatDialogModule,
+    MatGridListModule,
     MatTooltipModule,
     ToastrModule.forRoot({
       timeOut: 10000,

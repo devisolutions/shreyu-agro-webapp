@@ -64,8 +64,13 @@ export class ProductsListComponent implements OnInit {
     );
     dialogRef.afterClosed().subscribe((res: any) => {
       if (res) {
-        this.productsService.deleteProduct(code).subscribe(() => {
-          this.loadExistingProducts();
+        this.productsService.deleteProduct(code).subscribe((delRes: boolean) => {
+          if (delRes) {
+            this.toastr.success('Product deleted successfully');
+            this.loadExistingProducts();
+          } else {
+            this.toastr.error('Product cannot be deleted as it has been added to one of the previous bills');
+          }
         });
       }
     });
