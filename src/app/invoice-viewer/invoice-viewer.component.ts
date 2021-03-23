@@ -11,6 +11,7 @@ import { CommonStateService } from '../common-state.service';
 })
 export class InvoiceViewerComponent implements OnInit {
   imgPath = 'http://localhost:8080/shreyu-agro/assets/krishnaji.png';
+  // imgPath = 'assets/krishnaji.png';
   id: number;
   bill: Bill;
   pdfName: string;
