@@ -1,175 +1,198 @@
 <div fxLayout="column" class="preview-invoice-container">
   <div class="preview-invoice-container-content" id="pdf-content" #mainScreen>
-    <h2 class="header">
-      <span>
-        <img src="{{imgPath}}" height="100" width="150" />
-      </span>
-      <p style="margin-top: 0px;">Tax Invoice</p>
-    </h2>
+    <mat-grid-list cols="4" rowHeight="25px">
+      <mat-grid-tile [colspan]="3" rowspan="2">
+        <h3 class = "text-inside-grid-tax-invoice">Tax Invoice</h3>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" rowspan="2">
+        <div fxLayout="column" class="text-inside-grid-tax-invoice-date">
+          <span><b>Invoice No.:</b> {{bill?.billId}}</span>
+          <span><b>Invoice Date:</b> {{bill?.dateOfBill}}</span>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <!-- <span class="header" style="margin-top: 0px;">sagar</span> -->
+    <mat-grid-list cols="8" rowHeight="30px">
+      <mat-grid-tile [colspan]="2" rowspan="2">
+        <img class="buyer-text-inside-grid" src="{{imgPath}}" height="100" width="150" />
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="6" rowspan="2">
+        <h3 class="text-inside-grid-heading">Shreyu Agro Food Private Limited</h3>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]=8 rowspan="4">
+        <div fxLayout="column" class="text-inside-grid">
+          <div fxLayout="row">
+            <mat-icon>business</mat-icon>
+            <span style="margin-left: 10px;">Megha Silver Building, Office No-11, Atmaram Kene Residency, Rambaug, Kalyan(W)-421301</span>
+          </div>
+          <div fxLayout="row">
+            <div fxLayout="row">
+              <mat-icon>email</mat-icon>
+              <span style="margin-left: 10px;">shreyuagro@gmail.com</span>
+            </div>
+            <div fxLayout="row" style="margin-left: 40px;">
+              <mat-icon>phone</mat-icon>
+              <span style="margin-left: 10px;">+91 9284877899</span>
+            </div>
+          </div>
+          <div fxLayout="row" style="height: 38px;">
+            <span fxFlex="36%"><b>GST No.: </b>27ABFCS1662M1ZY</span>
+            <span fxFlex="25%"><b>FSSAI: </b>215211040</span>
+            <span fxFlex="39%"><b>CIN: </b>U15100MH2020PTC352484</span>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
     <div fxLayout="column">
-      <fieldset fxFlex="50%" style="padding-bottom: 18px;">
-        <legend><b>Seller Details</b></legend>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="36%"><b>Name: </b>Shreyu Agro Food Pvt. Ltd.</p>
-          <p fxFlex="30%"><b>Invoice No.: </b>{{bill?.billId}}</p>
-          <p fxFlex="33%"><b>Invoice Date: </b>{{bill?.dateOfBill}}</p>
-        </div>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="36%"><b>Email: </b>shreyuagro@gmail.com</p>
-          <p fxFlex="30%"><b>Mobile: </b>+91 9284877899</p>
-          <p fxFlex="33%"><b>FSSAI No.: </b>215211040</p>
-          <!-- <p fxFlex="30%"><b>PAN No.: </b>ABFCS1662M</p>
-          <p fxFlex="33%"><b>TAN No.: </b>PNES70854A</p> -->
-        </div>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="36%"><b>GST No.: </b>27ABFCS1662M1ZY</p>
-          <p fxFlex="30%"><b>CIN: </b>U15100MH2020PTC352484</p>
-        </div>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="100%"><b>Address: </b>Megha Silver Building, Office No-11, Atmaram Kene Residency, Rambaug, Kalyan(W)-421301</p>
-        </div>
-      </fieldset>
-      <fieldset fxFlex="50%" style="padding-bottom: 18px;">
-        <legend><b>Buyer Details</b></legend>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="36%"><b>Name: </b>{{ bill?.buyerName }}</p>
-          <p fxFlex="30%"><b>Mobile: </b>{{ bill?.buyerMobileNumber }}</p>
-          <p fxFlex="33%"><b>Email: </b>{{ bill?.buyerEmail }}</p>
-        </div>
-        <div fxLayout="row" style="height: 38px;">
-          <p fxFlex="36%"><b>GST No: </b>{{ bill?.buyerGSTNumber }}</p>
-          <p fxFlex="60%"><b>Address: </b>{{ bill?.buyerAddress }}</p>
-        </div>
-      </fieldset>
-    </div>
-
-    <fieldset class="spacer">
-      <table mat-table [dataSource]="dataSource" style="text-align-last: center;">
-        <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-        <!-- Code Column -->
-        <!-- <ng-container matColumnDef="product_code">
-          <th mat-header-cell *matHeaderCellDef>Product Code</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.productCode }}
-          </td>
-        </ng-container> -->
-        <!-- Name Column -->
-        <ng-container matColumnDef="product_name">
-          <th mat-header-cell *matHeaderCellDef class="bold">Product Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-        </ng-container>
-        <!-- Weight Column -->
-        <ng-container matColumnDef="hsn_code">
-          <th mat-header-cell *matHeaderCellDef class="bold">HSN Code</th>
-          <td mat-cell *matCellDef="let element">{{ element.hsnCode }}</td>
-        </ng-container>
-        <!-- Weight Column -->
-        <ng-container matColumnDef="product_weight">
-          <th mat-header-cell *matHeaderCellDef class="bold">Weight</th>
-          <td mat-cell *matCellDef="let element">{{ convertWeight(element.name, element.weightInGms) }}</td>
-        </ng-container>
-        <!-- Price Column -->
-        <ng-container matColumnDef="product_price">
-          <th mat-header-cell *matHeaderCellDef class="bold">Amount</th>
-          <td mat-cell *matCellDef="let element">{{ element.price }}</td>
-        </ng-container>
-        <!-- Quantity Column -->
-        <ng-container matColumnDef="product_quantity">
-          <th mat-header-cell *matHeaderCellDef class="bold">Quantity</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.productQuantity / element.itemsPerBox }} ({{element.itemsPerBox}} pcs)
-          </td>
-        </ng-container>
+      <mat-grid-list cols="4" rowHeight="25px">
+        <mat-grid-tile [colspan]="4" rowspan="4">
+          <div fxLayout="column" class="buyer-text-inside-grid">
+            <h3 style="margin: 0px 0px 6px 0px;">{{ bill?.buyerName | titlecase }}</h3>
+            <div fxLayout="column">
+              <div fxLayout="row">
+                <mat-icon>business</mat-icon>
+                <span style="margin-left: 10px;">{{ bill?.buyerAddress }}</span>
+              </div>
+              <div fxLayout="row">
+                <div fxLayout="row">
+                  <mat-icon>email</mat-icon>
+                  <span style="margin-left: 10px;">{{ bill?.buyerEmail }}</span>
+                </div>
+                <div fxLayout="row" style="margin-left: 20px;">
+                  <mat-icon>phone</mat-icon>
+                  <span style="margin-left: 10px;">{{ bill?.buyerMobileNumber }}</span>
+                </div>
+                <span style="margin-left: 20px;"><b>GST No.: </b>{{ bill?.buyerGSTNumber }}</span>
+              </div>
+            </div>            
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div class="spacer">
+        <table mat-table [dataSource]="dataSource" style="text-align-last: center;">
         
-        <ng-container matColumnDef="total_wo_gst">
-          <th mat-header-cell *matHeaderCellDef class="bold">Taxable Amount</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.price * element.productQuantity }}
-          </td>
-        </ng-container>
-        <!-- CGST Column -->
-        <ng-container matColumnDef="product_cgst">
-          <th mat-header-cell *matHeaderCellDef class="bold">CGST</th>
-          <td mat-cell *matCellDef="let element">{{ element.cgst }}</td>
-        </ng-container>
-        <!-- SGST Column -->
-        <ng-container matColumnDef="product_sgst">
-          <th mat-header-cell *matHeaderCellDef class="bold">SGST</th>
-          <td mat-cell *matCellDef="let element">{{ element.sgst }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="gst_amount">
-          <th mat-header-cell *matHeaderCellDef class="bold">GST Amount</th>
-          <td mat-cell *matCellDef="let element">
-            {{ (element.productQuantity * element.price +
-              (element.price *
-                element.productQuantity *
-                (element.sgst + element.cgst)) /
-                100) - (element.price * element.productQuantity) | number : '1.2-2' }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="total">
-          <th mat-header-cell *matHeaderCellDef class="bold">Total Amount</th>
-          <td mat-cell *matCellDef="let element">
-            {{
-              element.productQuantity * element.price +
+          <!-- Code Column -->
+          <!-- <ng-container matColumnDef="product_code">
+            <th mat-header-cell *matHeaderCellDef>Product Code</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.productCode }}
+            </td>
+          </ng-container> -->
+          <!-- Name Column -->
+          <ng-container matColumnDef="product_name">
+            <th mat-header-cell *matHeaderCellDef class="bold">Product Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+          <!-- Weight Column -->
+          <ng-container matColumnDef="hsn_code">
+            <th mat-header-cell *matHeaderCellDef class="bold">HSN Code</th>
+            <td mat-cell *matCellDef="let element">{{ element.hsnCode }}</td>
+          </ng-container>
+          <!-- Weight Column -->
+          <ng-container matColumnDef="product_weight">
+            <th mat-header-cell *matHeaderCellDef class="bold">Weight</th>
+            <td mat-cell *matCellDef="let element">{{ convertWeight(element.name, element.weightInGms) }}</td>
+          </ng-container>
+          <!-- Price Column -->
+          <ng-container matColumnDef="product_price">
+            <th mat-header-cell *matHeaderCellDef class="bold">Amount</th>
+            <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+          </ng-container>
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="product_quantity">
+            <th mat-header-cell *matHeaderCellDef class="bold">Quantity</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.productQuantity / element.itemsPerBox }} ({{element.itemsPerBox}} pcs)
+            </td>
+          </ng-container>
+          
+          <ng-container matColumnDef="total_wo_gst">
+            <th mat-header-cell *matHeaderCellDef class="bold">Taxable Amount</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.price * element.productQuantity  | number : '1.2-2' }}
+            </td>
+          </ng-container>
+          <!-- CGST Column -->
+          <ng-container matColumnDef="product_cgst">
+            <th mat-header-cell *matHeaderCellDef class="bold">CGST</th>
+            <td mat-cell *matCellDef="let element">{{ element.cgst }}</td>
+          </ng-container>
+          <!-- SGST Column -->
+          <ng-container matColumnDef="product_sgst">
+            <th mat-header-cell *matHeaderCellDef class="bold">SGST</th>
+            <td mat-cell *matCellDef="let element">{{ element.sgst }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="gst_amount">
+            <th mat-header-cell *matHeaderCellDef class="bold">GST Amount</th>
+            <td mat-cell *matCellDef="let element">
+              {{ (element.productQuantity * element.price +
                 (element.price *
                   element.productQuantity *
                   (element.sgst + element.cgst)) /
-                  100 | number : '1.2-2'
-            }}
-          </td>
-        </ng-container>
-        <tr
-          mat-header-row
-          *matHeaderRowDef="displayedColumns; sticky: true"
-        ></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-    </fieldset>
-    <fieldset class="spacer">
-      <mat-label>
-        <span fxFlex="32%"><b>Invoice Date: </b>{{ bill?.dateOfBill }}</span>
-        <span fxFlex="23%"><b>Total Price : </b>{{ bill?.billAmount }}</span>
-        <span fxFlex="16%"><b>Discount : </b>{{ bill?.discountRate }}</span>
-        <span fxFlex="30%"
-          ><b>Discounted Price : </b>{{ bill?.finalBillAmount }}</span
-        >
+                  100) - (element.price * element.productQuantity) | number : '1.2-2' }}
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef class="bold">Total Amount</th>
+            <td mat-cell *matCellDef="let element">
+              {{
+                element.productQuantity * element.price +
+                  (element.price *
+                    element.productQuantity *
+                    (element.sgst + element.cgst)) /
+                    100 | number : '1.2-2'
+              }}
+            </td>
+          </ng-container>
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <div fxLayout="row" class="spacer" style="margin-left: 4px;">
+          <mat-label fxFlex="100%">
+            <span fxFlex="22%"><b>Total: </b>{{ bill?.billAmount | currency: 'INR' }}</span>
+            <span fxFlex="78%" *ngIf = "bill?.discountRate !=0"><b>Discounted Price: </b>{{ bill?.finalBillAmount | currency: 'INR'}} (<b>discount:</b> {{ bill?.discountRate }}%)</span>
+          </mat-label>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" class="spacer" style="margin-left: 4px;">
+      <mat-label fxFlex="100%">
+        <span fxFlex="22%"><b>Bank: </b>IndusInd Bank</span>
+        <span fxFlex="30%"><b>Account No.: </b>257724253077</span>
+        <span fxFlex="27%"><b>IFSC Code: </b>INDB0000154</span>
+        <span fxFlex="21%"><b>Branch: </b>Kalyan West</span>
       </mat-label>
-    </fieldset>
-    <div fxLayout="row" class="spacer">
-      <fieldset fxFlex="100%">
-        <mat-label>
-          <span fxFlex="26%"><b>Bank Name: </b>IndusInd Bank</span>
-          <span fxFlex="28%"><b>Account No.: </b>257724253077</span>
-          <span fxFlex="25%"><b>IFSC Code: </b>INDB0000154</span>
-          <span fxFlex="21%"><b>Branch: </b>Kalyan West</span>
-        </mat-label>
-      </fieldset>
     </div>
-    <div fxLayout="row" class="spacer">
-      <fieldset fxFlex="33.33%">
-        <b>Terms & Conditions :</b>
-        <ul style="font-size: 14px;">
-          <li>Payment of this bill should be on demand.</li>
-          <li>We do not take any responsibility after the goods have left from our Godown.</li>
-        </ul>
-      </fieldset>
-      <fieldset fxFlex="33.33%">
-        <br /><br />
-        Receiver's Signature
-        <hr />
-        <b>To {{ bill?.buyerName }}</b>
-      </fieldset>
-      <fieldset fxFlex="33.33%">
-        <br /><br />
-        Authorized Signature
-        <hr />
-        <b>From SHREYU AGRO FOOD Pvt Ltd - KRISHNAJI</b>
-      </fieldset>
-    </div>
+    <mat-grid-list cols="3" rowHeight="125px" class="spacer solid-lines">
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <span>
+            <b>Terms & Conditions :</b>
+            <ul style="font-size: 14px;">
+              <li>Payment of this bill should be on demand.</li>
+              <li>We do not take any responsibility after the goods have left from our Godown.</li>
+            </ul>
+          </span>
+        </mat-grid-tile>
+        <!-- <div class="vertical-line-1"></div> -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1" class="solid-lines-side">
+          <div fxLayout="column" class="text-inside-grid" style="margin-top: 32px;">
+            <span>Receiver's Signature</span>
+            <b>To {{ bill?.buyerName | titlecase  }}</b>
+          </div>
+        </mat-grid-tile>
+        <!-- <div class="vertical-line-2"></div> -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <div fxLayout="column" class="text-inside-grid" style="margin-top: 32px;">
+            <span>Authorized Signature</span>
+            <span><b>From Shreyu Agro Food Pvt. Ltd.</b></span>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
   </div>
   <div fxFlex="100%" fxLayoutAlign="space-around center" class="spacer">
     <button

@@ -127,3 +127,49 @@ tr.mat-header-row {
 tr.mat-row:last-child {
   border-bottom: 1px solid lightgrey;
 }
+
+mat-grid-tile {
+  /* background: lightblue; */
+}
+
+.solid-lines {
+  border: solid 1px #000;
+}
+
+.solid-lines-side {
+  border-left: solid 1px #000;
+  border-right: solid 1px #000;
+}
+
+.text-inside-grid {
+  position: absolute;
+  left: 2%;
+}
+
+.text-inside-grid-tax-invoice {
+  position: absolute;
+  left: 55%;
+}
+
+.text-inside-grid-tax-invoice-date {
+  position: absolute;
+  left: 0%;
+}
+
+.margin-top-4 {
+  margin-top: 4px;
+}
+
+.price-label {
+  margin-left: 70%;
+}
+
+.buyer-text-inside-grid {
+  position: absolute;
+  left: 0%;
+}
+
+.text-inside-grid-heading {
+  position: absolute;
+  left: 0%;
+}
